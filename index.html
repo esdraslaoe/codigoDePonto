@@ -6,99 +6,98 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Código de Ponto</title>
+    
+    <style>
+        /* Reset básico para evitar margens indesejadas */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            background-color: #000;
+            color: yellow;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container principal flexível e centralizado */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+            gap: 15px; 
+        }
+
+        /* Títulos responsivos */
+        h1, h2 {
+            font-size: clamp(24px, 4vw, 36px);
+            text-transform: uppercase;
+        }
+
+        h3 {
+            font-size: clamp(18px, 3vw, 24px);
+            margin-top: 15px;
+        }
+
+        /* Imagem responsiva */
+        .imagem img {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px; 
+            object-fit: contain;
+        } 
+
+        /* Input amigável */
+        .inputão {
+            width: 100%;
+            max-width: 250px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #fff;
+            text-align: center;
+        }
+
+        /* Botão responsivo */
+        .butãozinho {
+            width: 100%;
+            max-width: 180px;
+            padding: 12px;
+            background-color: red;
+            color: yellow;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .butãozinho:hover {
+            background-color: darkred;
+        }
+
+        /* Caixa do resultado */
+        .resultadoFinal {
+            display: inline-block;
+            min-width: 60px;
+            padding: 10px 15px;
+            border: 5px solid #0f0;
+            font-size: clamp(24px, 5vw, 40px);
+            font-weight: bold;
+            background-color: #111;
+        }
+    </style>
 </head>
-
-<style>
-    /* Reset básico para evitar margens indesejadas */
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    html, body {
-        height: 100%;
-        background-color: #000;
-        color: yellow;
-        font-family: Arial, sans-serif;
-    }
-
-    /* Container principal flexível e centralizado */
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        padding: 20px;
-        text-align: center;
-        gap: 15px; /* Espaçamento padrão entre os elementos */
-    }
-
-    /* Títulos responsivos com limite mínimo usando clamp() */
-    h1, h2 {
-        font-size: clamp(24px, 4vw, 36px);
-        text-transform: uppercase;
-    }
-
-    h3 {
-        font-size: clamp(18px, 3vw, 24px);
-        margin-top: 15px;
-    }
-
-    /* Imagem responsiva */
-    .imagem img {
-        max-width: 100%;
-        height: auto;
-        max-height: 200px; /* Evita que a imagem fique gigante em telas grandes */
-        object-fit: contain;
-    } 
-
-    /* Input amigável para dedões no celular */
-    .inputão {
-        width: 100%;
-        max-width: 250px;
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 5px;
-        border: 1px solid #fff;
-        text-align: center;
-    }
-
-    /* Botão responsivo e fácil de clicar */
-    .butãozinho {
-        width: 100%;
-        max-width: 180px;
-        padding: 12px;
-        background-color: red;
-        color: yellow;
-        font-weight: bold;
-        font-size: 16px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.2s;
-    }
-
-    .butãozinho:hover {
-        background-color: darkred;
-    }
-
-    /* Caixa do resultado responsiva */
-    .resultadoFinal {
-        display: inline-block;
-        min-width: 60px;
-        padding: 10px 15px;
-        border: 5px solid #0f0;
-        font-size: clamp(24px, 5vw, 40px);
-        font-weight: bold;
-        background-color: #111;
-    }
-</style>
 
 <body>
 
-    <!-- Envelopando tudo em um container para o Flexbox fazer a mágica -->
     <div class="container">
         <h1>Código de Ponto</h1>
 
@@ -132,11 +131,10 @@
             if (dado === formas1[property]) {
                 resultadoFinal.innerText = property;
                 encontrado = true;
-                break; // Para o loop assim que encontrar
+                break; 
             }
         }
 
-        // Caso o código não seja encontrado
         if (!encontrado) {
             resultadoFinal.innerText = "?";
         }
